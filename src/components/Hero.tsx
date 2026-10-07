@@ -13,9 +13,6 @@ export function Hero() {
         <span>
           <span className="text-accent">loc</span> {portfolio.location}
         </span>
-        <span>
-          <span className="text-accent">now</span> {portfolio.now}
-        </span>
       </div>
       <div className="mt-3 flex flex-wrap gap-3">
         <a
@@ -26,6 +23,7 @@ export function Hero() {
         </a>
         <a
           href={portfolio.resumeHref}
+          download
           className="inline-flex min-h-11 items-center rounded-lg border border-line-strong px-5 text-[15px] !text-fg hover:border-accent"
         >
           Download resume

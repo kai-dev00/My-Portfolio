@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -8,10 +10,30 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur">
       <div className="mx-auto flex w-full max-w-[1120px] flex-wrap items-center justify-between gap-x-4 gap-y-1 px-6 py-3 md:px-10">
         <div className="flex flex-wrap items-center gap-4">
-          <a href="#top" className="font-mono text-[15px] text-fg">
-            {portfolio.handle}
-            <span className="text-accent">_</span>
-          </a>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2.5 font-mono text-[15px] text-fg"
+          >
+            {/* Both render; globals.css hides the one that doesn't match the theme. */}
+            <Image
+              src="/logo-dark.png"
+              alt=""
+              width={40}
+              height={40}
+              className="logo-dark size-10 rounded-lg"
+            />
+            <Image
+              src="/logo-light.png"
+              alt=""
+              width={40}
+              height={40}
+              className="logo-light size-10 rounded-lg"
+            />
+            <span>
+              {portfolio.handle}
+              <span className="text-accent">_</span>
+            </span>
+          </Link>
           {portfolio.openToWork && (
             <span className="inline-flex items-center gap-2 rounded-full border border-line px-2.5 py-1 font-mono text-xs text-muted">
               <span className="size-[7px] rounded-full bg-accent" />
@@ -25,13 +47,13 @@ export function Header() {
             className="flex flex-wrap gap-x-5 font-mono text-sm"
           >
             {links.map((l) => (
-              <a
+              <Link
                 key={l}
-                href={`#${l}`}
+                href={`/#${l}`}
                 className="inline-flex min-h-11 items-center !text-muted hover:!text-accent"
               >
                 {l}
-              </a>
+              </Link>
             ))}
           </nav>
           <ThemeToggle />

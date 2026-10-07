@@ -4,17 +4,15 @@ import type { IconType } from "react-icons";
 import { FaLinkedin } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import { TbMail } from "react-icons/tb";
+import { ContactForm } from "./ContactForm";
 import { SectionLabel } from "./SectionLabel";
 
-const field =
-  "min-h-11 w-full rounded-lg border border-line-strong bg-bg px-3 font-sans text-base text-fg placeholder:text-faint focus:border-accent focus:outline-none";
 const linkClass = "inline-flex min-h-11 items-center gap-3";
 // Keyed by the `label` of each entry in portfolio.social.
 const socialIcons: Record<string, IconType> = {
   github: SiGithub,
   linkedin: FaLinkedin,
 };
-const label ="flex flex-col gap-1.5 font-mono text-xs text-muted";
 
 export function Contact() {
   return (
@@ -55,47 +53,8 @@ export function Contact() {
           </div>
         </div>
 
-        {/* UI shell only: wire to a route handler / Formspree / Resend later. */}
-        <form className="flex flex-col gap-4 rounded-xl border border-line bg-surface p-6 md:p-8">
-          <div className="font-mono text-[13px] text-faint">
-            $ send-message --to {portfolio.name}
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className={label}>
-              --name
-              <input
-                type="text"
-                name="name"
-                placeholder="Maria Santos"
-                className={field}
-              />
-            </label>
-            <label className={label}>
-              --email
-              <input
-                type="email"
-                name="email"
-                placeholder="maria@company.com"
-                className={field}
-              />
-            </label>
-          </div>
-          <label className={label}>
-            --message
-            <textarea
-              name="message"
-              rows={6}
-              placeholder="Hi! I'd like to talk about a project."
-              className={`${field} resize-y py-2.5`}
-            />
-          </label>
-          <button
-            type="button"
-            className="min-h-11 cursor-pointer self-start rounded-lg bg-accent px-5 text-[15px] font-medium text-bg hover:opacity-90"
-          >
-            Send message ↵
-          </button>
-        </form>
+        {/* Posts to /api/contact (src/app/api/contact/route.ts). */}
+        <ContactForm recipient={portfolio.name} />
       </div>
     </section>
   );
