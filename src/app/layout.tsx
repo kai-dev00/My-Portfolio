@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,6 +18,15 @@ export const metadata: Metadata = {
   title: "Kyle Vincent Manuel · Software Engineer",
   description:
     "Portfolio of Kyle Vincent Manuel, a software engineer building mobile and web apps.",
+  // Browser tab icon follows the browser's own theme (not the site toggle).
+  // 256px copies of public/logo-dark.png and logo-light.png.
+  icons: {
+    icon: [
+      { url: "/icon-dark.png", type: "image/png", media: "(prefers-color-scheme: dark)" },
+      { url: "/icon-light.png", type: "image/png", media: "(prefers-color-scheme: light)" },
+    ],
+    apple: "/icon-dark.png",
+  },
 };
 
 // Runs before first paint: saved choice, else the OS preference, else dark.
@@ -32,7 +43,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

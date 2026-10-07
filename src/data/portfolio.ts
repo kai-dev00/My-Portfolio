@@ -1,8 +1,22 @@
 // All portfolio content lives here. Replace the [placeholders] as you go.
 
+export type ProjectCategory = "website" | "web-app" | "mobile-app";
+
+// Order and wording of the groups on the /projects page.
+export const categories: {
+  id: ProjectCategory;
+  label: string;
+  blurb: string;
+}[] = [
+  { id: "website", label: "Websites", blurb: "Sites built to inform and look good." },
+  { id: "web-app", label: "Web apps", blurb: "Browser-based apps with real logic behind them." },
+  { id: "mobile-app", label: "Mobile apps", blurb: "Apps built for phones and tablets." },
+];
+
 export type Project = {
   slug: string;
   title: string;
+  category: ProjectCategory;
   type: string;
   year?: string;
   status?: "featured" | "in-progress";
@@ -31,10 +45,9 @@ export const portfolio = {
   tagline:
     "Software engineer building mobile and web apps that people actually use. I like taking ideas from a rough sketch to something shipped.",
   location: "Philippines · UTC+8",
-  now: "building a receipt bookkeeping tool",
   openToWork: true,
   email: "[kylevincentmanuel@gmail.com]",
-  resumeHref: "#",
+  resumeHref: "/Kyle-Manuel-Resume.pdf",
   social: [
     { label: "github", href: "https://github.com/kai-dev00" },
     {
@@ -42,85 +55,89 @@ export const portfolio = {
       href: "https://www.linkedin.com/in/kyle-manuel-238262312/",
     },
   ],
-  stats: [
-    { value: "[X]+", label: "years coding" },
-    { value: "[X]", label: "projects built" },
-    { value: "[X]", label: "apps in users' hands" },
-    { value: "∞", label: "cups of kape" },
-  ],
+  // "years in web dev" counts up from this date (YYYY-MM).
+  careerStart: "2024-06",
+  // Extra stats shown after the computed ones (years, projects, technologies) in Stats.tsx.
+  stats: [{ value: "∞", label: "cups of kape" }],
   projects: [
     {
-      slug: "badminton-app",
-      title: "Badminton app",
-      type: "mobile",
+      slug: "featured-project",
+      category: "web-app",
+      title: "[Featured project]",
+      type: "[type]",
       status: "featured",
       summary:
-        "[What the app does and who it's for, in one or two sentences. What problem made you build it?]",
+        "[What it does and who it's for, in one or two sentences. What problem made you build it?]",
       highlights: [
         "[Key feature or technical challenge you solved]",
-        "[Backend, auth or data work with Supabase]",
-        "Built and packaged the Android release",
+        "[Backend, auth or data work]",
+        "[Something you shipped or released]",
       ],
-      stack: ["Expo", "React Native", "Supabase", "TypeScript"],
+      stack: ["[Stack]"],
       links: [
         { label: "case study →", href: "#" },
         { label: "github ↗", href: "#" },
-        { label: "download apk ↗", href: "#" },
       ],
     },
     {
-      slug: "receipt-bookkeeping",
-      title: "Receipt bookkeeping tool",
-      type: "SaaS · web",
-      status: "in-progress",
+      slug: "badminton-app",
+      category: "mobile-app",
+      title: "Badminton app",
+      type: "mobile",
       summary:
-        "A tool to help Philippine bookkeepers organize receipts and records. [Add the core idea in one line.]",
-      stack: ["[Stack]"],
-      links: [{ label: "follow the build →", href: "#" }],
+        "A mobile app for running badminton tournaments. It generates the bracket and keeps score for every match, so organizers don't have to track it on paper.",
+      stack: ["Expo", "React Native", "Supabase", "TypeScript"],
+      links: [],
     },
     {
-      slug: "project-three",
-      title: "[Project name]",
-      type: "[type]",
-      year: "[year]",
-      summary: "[One or two lines on what it is and the result.]",
-      stack: ["[Stack]"],
-      links: [{ label: "view project →", href: "#" }],
+      slug: "todahero",
+      category: "mobile-app",
+      title: "TodaHero",
+      type: "mobile · ride-hailing",
+      summary:
+        "A ride-hailing app built solely for tricycle drivers. Built with React Native and Node.js, with Firebase for user data, Expo Go for testing, and deployed on a Raspberry Pi for kiosk use.",
+      stack: ["React Native", "Node.js", "Firebase", "Expo Go", "Raspberry Pi"],
+      links: [],
     },
   ] satisfies Project[],
   experience: [
     {
       hash: "a3f9c21",
-      period: "[2024] — present",
-      role: "[Role]",
-      org: "[Company]",
-      commit: "feat: [what you work on and one result you're proud of]",
-      location: "[City / Remote]",
-      type: "Full-time",
+      period: "June 2024 — present",
+      role: "Software Developer",
+      org: "Microsource Inc.",
+      commit: "feat: web apps, HR systems and data pipelines, front to back",
       highlights: [
-        "[Biggest thing you shipped, with a number if you have one]",
-        "[Something you improved: speed, reliability, UX]",
-        "[How you worked with the team]",
+        "Built a responsive, accessible website with Remix, React, Shadcn and Tailwind CSS that improved usability and performance.",
+        "Developed an HRIS with Remix, TypeScript, Prisma and PostgreSQL, automating HR workflows and cutting manual processes.",
+        "Maintain and enhance an enterprise web app: .NET, Entity Framework Core and SQL on the backend, React and TypeScript on the frontend.",
+        "Maintain ETL processes in .NET and Snowflake, and support WhereScape (DEV) ETL workflows for accurate, reliable warehouse data.",
+        "Work in Agile teams: daily stand-ups and retrospectives to deliver features on time.",
       ],
-      stack: ["React", "TypeScript", "Supabase"],
+      stack: [
+        "Remix",
+        "React",
+        "TypeScript",
+        "Shadcn",
+        "Tailwind CSS",
+        "Prisma",
+        "PostgreSQL",
+        ".NET",
+        "Entity Framework Core",
+        "SQL Server",
+        "Snowflake",
+        "WhereScape",
+        "Agile",
+      ],
       current: true,
     },
     {
-      hash: "7be104d",
-      period: "[2022] — [2024]",
-      role: "[Role]",
-      org: "[Company]",
-      commit: "feat: [main responsibilities and impact]",
-      location: "[City / Remote]",
-      type: "[Contract / Internship]",
-      highlights: ["[Main responsibility and result]", "[Another win]"],
-      stack: ["[Stack]"],
-    },
-    {
       hash: "0c1e5a8",
-      period: "[year]",
-      role: "[Degree]",
-      org: "[School]",
+      period: "2020 — 2024",
+      role: "BS Computer Engineering",
+      org: "Bulacan State University",
+      location: "Meneses Campus",
+      type: "Education",
       commit: "init: wrote my first hello world",
     },
   ] satisfies Job[],
@@ -148,7 +165,7 @@ export const portfolio = {
     "Data Warehousing": ["Snowflake", "WhereScape"],
   } as Record<string, string[]>,
   about: [
-    "[A short paragraph about you: how you got into coding and what kind of problems you enjoy.]",
-    "[A second line on how you work, like caring about clean UI, shipping fast, or learning by building side projects.]",
+    "I'm a full-stack developer with two years of experience building web applications, mostly REST APIs in .NET paired with React front ends.",
+    "Away from work, I build mobile apps for fun. It keeps me working across the whole stack, from the API and database to the screen in your hand.",
   ],
 };

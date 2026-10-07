@@ -75,6 +75,12 @@ a:hover {
   color: var(--accent-hover);
 }
 
+/* Header logo: dark artwork on the dark theme, light artwork on the light theme. */
+[data-theme="light"] .logo-dark,
+:root:not([data-theme="light"]) .logo-light {
+  display: none;
+}
+
 /* Theme toggle shows the icon for the theme you'd switch to. */
 [data-theme="light"] .icon-to-light,
 :root:not([data-theme="light"]) .icon-to-dark {

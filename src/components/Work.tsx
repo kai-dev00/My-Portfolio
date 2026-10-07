@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { portfolio, type Project } from "@/data/portfolio";
 import { linkProps } from "@/lib/links";
+import { ProjectCard } from "./ProjectCard";
 import { SectionLabel } from "./SectionLabel";
 import { TechChip } from "./TechIcon";
 
@@ -44,31 +46,6 @@ function FeaturedCard({ p }: { p: Project }) {
   );
 }
 
-function SmallCard({ p }: { p: Project }) {
-  return (
-    <article className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-[22px]">
-      <div className="flex justify-between gap-2 font-mono text-xs text-muted">
-        <span>{p.type}</span>
-        {p.status === "in-progress" ? (
-          <span className="text-warn">● in progress</span>
-        ) : (
-          <span>{p.year}</span>
-        )}
-      </div>
-      <h3 className="text-xl font-medium">{p.title}</h3>
-      <p className="text-[15px] text-soft">{p.summary}</p>
-      <p className="font-mono text-xs text-accent">{p.stack.join(" · ")}</p>
-      <div className="mt-auto flex flex-wrap gap-5 font-mono text-sm">
-        {p.links.map((l) => (
-          <a key={l.label} href={l.href} {...linkProps(l.href)}>
-            {l.label}
-          </a>
-        ))}
-      </div>
-    </article>
-  );
-}
-
 export function Work() {
   const featured = portfolio.projects.find((p) => p.status === "featured");
   const rest = portfolio.projects.filter((p) => p !== featured);
@@ -82,12 +59,12 @@ export function Work() {
       {featured && <FeaturedCard p={featured} />}
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-5">
         {rest.map((p) => (
-          <SmallCard key={p.slug} p={p} />
+          <ProjectCard key={p.slug} p={p} />
         ))}
       </div>
-      <a href="#" className="self-start font-mono text-sm">
-        $ ls ./all-projects →
-      </a>
+      <Link href="/projects" className="self-start font-mono text-sm">
+        $ ls ./projects →
+      </Link>
     </section>
   );
 }
