@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LabelZzz } from "@/components/kape/LabelZzz";
 import { ProjectCard } from "@/components/ProjectCard";
 import { categories, portfolio } from "@/data/portfolio";
 import { isPlaceholder } from "@/lib/projects";
@@ -21,6 +22,7 @@ export default function ProjectsPage() {
         <p className="font-mono text-sm text-accent">{"// ls ./projects"}</p>
         <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">
           All projects
+          <LabelZzz scale={1} gap="ml-[0.25em]" />
         </h1>
         <p className="max-w-[640px] text-lg text-muted md:text-xl">
           Everything I&apos;ve built, grouped by what it runs on.
@@ -59,6 +61,7 @@ export default function ProjectsPage() {
                 <span className="font-mono text-base font-normal text-faint">
                   {items.length}
                 </span>
+                <LabelZzz scale={1} gap="ml-[0.35em]" />
               </h2>
               <p className="text-muted">{c.blurb}</p>
             </div>

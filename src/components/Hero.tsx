@@ -1,4 +1,5 @@
 import { portfolio } from "@/data/portfolio";
+import { HeroCursor } from "./kape/HeroCursor";
 
 export function Hero() {
   return (
@@ -6,7 +7,7 @@ export function Hero() {
       <p className="font-mono text-sm text-accent">{"// hello, world"}</p>
       <h1 className="text-5xl md:text-7xl font-semibold leading-[1.05] tracking-[-0.03em] ">
         {portfolio.name}
-        <span className="cursor font-normal text-accent">|</span>
+        <HeroCursor />
       </h1>
       <p className="max-w-[680px] text-xl md:text-2xl text-muted">{portfolio.tagline}</p>
       <div className="flex flex-wrap gap-x-5 gap-y-1 font-mono text-[13px] text-muted">
