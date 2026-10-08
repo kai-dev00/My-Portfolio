@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { KapeContent } from "@/components/kape/KapeContent";
+import { KapeCursor } from "@/components/kape/KapeCursor";
+import { KapeProvider } from "@/components/kape/KapeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,10 +46,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+      {/* overflow-x-clip: the 1px page shake must never cause a horizontal scrollbar. */}
+      <body className="flex min-h-full flex-col overflow-x-clip">
+        <KapeProvider>
+          {/* Outside KapeContent: that wrapper shakes, and position:fixed inside it would shake too. */}
+          <KapeCursor />
+          <Header />
+          <KapeContent>
+            {children}
+            <Footer />
+          </KapeContent>
+        </KapeProvider>
       </body>
     </html>
   );
