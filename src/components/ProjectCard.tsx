@@ -13,7 +13,17 @@ export function ProjectCard({ p }: { p: Project }) {
           <span>{p.year}</span>
         )}
       </div>
-      <h3 className="text-xl font-medium">{p.title}</h3>
+      {p.category === "website" && p.websiteUrl ? (
+        <a
+          href={p.websiteUrl}
+          {...linkProps(p.websiteUrl)}
+          className="w-fit text-xl font-medium hover:underline"
+        >
+          {p.title} ↗
+        </a>
+      ) : (
+        <h3 className="text-xl font-medium">{p.title}</h3>
+      )}
       <p className="text-[15px] text-soft">{p.summary}</p>
       <div className="flex flex-wrap gap-2">
         {p.stack.map((s, i) => (

@@ -8,14 +8,27 @@ export const categories: {
   label: string;
   blurb: string;
 }[] = [
-  { id: "website", label: "Websites", blurb: "Sites built to inform and look good." },
-  { id: "web-app", label: "Web apps", blurb: "Browser-based apps with real logic behind them." },
-  { id: "mobile-app", label: "Mobile apps", blurb: "Apps built for phones and tablets." },
+  {
+    id: "website",
+    label: "Websites",
+    blurb: "Sites built to inform and look good.",
+  },
+  {
+    id: "web-app",
+    label: "Web apps",
+    blurb: "Browser-based apps with real logic behind them.",
+  },
+  {
+    id: "mobile-app",
+    label: "Mobile apps",
+    blurb: "Apps built for phones and tablets.",
+  },
 ];
 
 export type Project = {
   slug: string;
   title: string;
+  websiteUrl?: string;
   category: ProjectCategory;
   type: string;
   year?: string;
@@ -62,28 +75,33 @@ export const portfolio = {
   projects: [
     {
       slug: "featured-project",
-      category: "web-app",
-      title: "[Featured project]",
-      type: "[type]",
+      category: "website",
+      title: "Better Plaridel",
+      websiteUrl:
+        "https://betterplaridel-git-main-kai-dev00s-projects.vercel.app/",
+      type: "website",
       status: "featured",
       summary:
-        "[What it does and who it's for, in one or two sentences. What problem made you build it?]",
+        "A volunteer-driven civic technology initiative and open-source project focused on making government data in Plaridel, Bulacan more accessible, understandable, and useful to the community. The project was developed as part of BetterGov.ph, promoting transparency, public access to information, and data-driven civic engagement at the local level.",
       highlights: [
-        "[Key feature or technical challenge you solved]",
-        "[Backend, auth or data work]",
-        "[Something you shipped or released]",
+        "Managed the project's GitHub repository, including code organization, version control, and collaboration.",
+        "Handled application deployment, configuration, and release management.",
+        "Contributed to the project's technical development and overall delivery as part of BetterGov.ph.",
       ],
-      stack: ["[Stack]"],
+      stack: ["NextJs", "Vercel"],
       links: [
-        { label: "case study →", href: "#" },
-        { label: "github ↗", href: "#" },
+        {
+          label: "Github ↗",
+          href: "https://github.com/kai-dev00/betterplaridel",
+        },
+        { label: "Better Gov Ph ↗", href: "https://bettergov.ph/" },
       ],
     },
     {
       slug: "badminton-app",
       category: "mobile-app",
-      title: "Badminton app",
-      type: "mobile",
+      title: "Shuttleon",
+      type: "badminton scroing app",
       summary:
         "A mobile app for running badminton tournaments. It generates the bracket and keeps score for every match, so organizers don't have to track it on paper.",
       stack: ["Expo", "React Native", "Supabase", "TypeScript"],
@@ -93,10 +111,35 @@ export const portfolio = {
       slug: "todahero",
       category: "mobile-app",
       title: "TodaHero",
-      type: "mobile · ride-hailing",
+      type: "ride-hailing app",
       summary:
         "A ride-hailing app built solely for tricycle drivers. Built with React Native and Node.js, with Firebase for user data, Expo Go for testing, and deployed on a Raspberry Pi for kiosk use.",
       stack: ["React Native", "Node.js", "Firebase", "Expo Go", "Raspberry Pi"],
+      links: [],
+    },
+    {
+      slug: "bean-counter",
+      category: "web-app",
+      title: "Bean Counter",
+      type: "inventory system",
+      status: "featured",
+      summary:
+        "An internal back-office app for a coffee shop that replaces spreadsheets for tracking stock, ordering from suppliers and seeing what needs restocking. Staff join by invite, and what each person can do depends on their role.",
+      highlights: [
+        "Role-based access: admins build custom roles from 27 permissions, enforced on the server and in the UI",
+        "Purchase orders go from draft to received, which adds the stock to inventory automatically",
+        "Dashboard with spend trends, stock health, top suppliers and a live activity feed",
+        "Audit trail that records before/after changes for every create, update and delete",
+      ],
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind CSS",
+        "Shadcn",
+        "Upstash",
+      ],
       links: [],
     },
   ] satisfies Project[],
@@ -160,7 +203,7 @@ export const portfolio = {
       "Firebase",
     ],
     "Tools & Practices": ["Git", "Figma", "Azure DevOps", "Agile", "Expo Go"],
-    "AI": ["Claude Code"],
+    AI: ["Claude Code"],
     "IDEs & Editors": ["Visual Studio", "Visual Studio Code", "SSMS"],
     "Data Warehousing": ["Snowflake", "WhereScape"],
   } as Record<string, string[]>,

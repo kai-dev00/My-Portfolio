@@ -7,21 +7,31 @@ import { TechChip } from "./TechIcon";
 
 function FeaturedCard({ p }: { p: Project }) {
   return (
-    <article className="grid overflow-hidden rounded-xl border border-line bg-surface md:grid-cols-2">
-      <div className="flex aspect-[16/8] items-center justify-center border-b border-line md:aspect-auto md:border-b-0 md:border-r bg-surface-2 font-mono text-[13px] text-faint">
-        [app screenshots / phone mockups]
-      </div>
+    <article className="grid overflow-hidden rounded-xl border border-line bg-surface ">
       <div className="flex flex-col gap-3.5 p-6 md:p-10">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-2xl font-medium">{p.title}</h2>
-          <span className="font-mono text-xs text-accent">
-            ★ featured · {p.type}
-          </span>
+        <div>
+          <div className="flex flex-wrap items-baseline justify-between items-center gap-2 ">
+            {p.category === "website" && p.websiteUrl ? (
+              <a
+                href={p.websiteUrl}
+                {...linkProps(p.websiteUrl)}
+                className="text-2xl font-medium hover:underline"
+              >
+                {p.title} ↗
+              </a>
+            ) : (
+              <h2 className="text-2xl font-medium">{p.title}</h2>
+            )}
+
+            <span className="font-mono text-xs text-accent">
+              ★ featured · {p.type}
+            </span>
+          </div>
+
+          <p className="text-soft">{p.summary}</p>
         </div>
-        <p className="text-soft">{p.summary}</p>
         {p.highlights && (
           <ul className="font-mono text-[13px] leading-[1.9] text-soft">
-            <li className="text-faint">{"// what I did"}</li>
             {p.highlights.map((h, i) => (
               <li key={`${h}-${i}`}>
                 <span className="text-accent">›</span> {h}
@@ -57,7 +67,7 @@ export function Work() {
     >
       <SectionLabel num="02" title="selected work" />
       {featured && <FeaturedCard p={featured} />}
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-5">
+      <div className="grid grid-cols-1 auto-rows-fr gap-5 md:grid-cols-2">
         {rest.map((p) => (
           <ProjectCard key={p.slug} p={p} />
         ))}
