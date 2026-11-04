@@ -27,6 +27,7 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVercel,
+  SiUpstash,
 } from "react-icons/si";
 import {
   TbBrandCSharp,
@@ -82,6 +83,7 @@ const icons: Record<string, IconType> = {
   tailwindcss: SiTailwindcss,
   typescript: SiTypescript,
   vercel: SiVercel,
+  upstash: SiUpstash,
 };
 
 export function TechChip({
