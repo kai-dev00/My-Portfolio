@@ -153,8 +153,9 @@ export const portfolio = {
       highlights: [
         "Built a responsive, accessible website with Remix, React, Shadcn and Tailwind CSS that improved usability and performance.",
         "Developed an HRIS with Remix, TypeScript, Prisma and PostgreSQL, automating HR workflows and cutting manual processes.",
-        "Maintain and enhance an enterprise web app: .NET, Entity Framework Core and SQL on the backend, React and TypeScript on the frontend.",
+        "Maintain and enhance an enterprise web app: ASP.NET Core, Entity Framework Core and SQL on the backend, React and TypeScript on the frontend.",
         "Maintain ETL processes in .NET and Snowflake, and support WhereScape (DEV) ETL workflows for accurate, reliable warehouse data.",
+        "Developed an internal QC dashboard for transaction validation, automated reprocessing, document review, and error analytics. Built with React, TypeScript, ASP.NET Core, Snowflake, and SQL Server, featuring background processing and real-time updates.",
         "Work in Agile teams: daily stand-ups and retrospectives to deliver features on time.",
       ],
       stack: [
